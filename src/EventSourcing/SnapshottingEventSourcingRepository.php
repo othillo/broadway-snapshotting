@@ -6,8 +6,8 @@ namespace othillo\Broadway\Snapshotting\EventSourcing;
 
 use Broadway\Domain\AggregateRoot;
 use Broadway\EventSourcing\EventSourcingRepository;
+use Broadway\EventStore\EventStoreInterface;
 use Broadway\Repository\RepositoryInterface;
-use othillo\Broadway\Snapshotting\EventStore\SnapshottingEventStoreInterface;
 use othillo\Broadway\Snapshotting\Snapshot\Snapshot;
 use othillo\Broadway\Snapshotting\Snapshot\SnapshotNotFoundException;
 use othillo\Broadway\Snapshotting\Snapshot\SnapshotRepository;
@@ -22,7 +22,7 @@ class SnapshottingEventSourcingRepository implements RepositoryInterface
 
     public function __construct(
         EventSourcingRepository $eventSourcingRepository,
-        SnapshottingEventStoreInterface $eventStore,
+        EventStoreInterface $eventStore,
         SnapshotRepository $snapshotRepository,
         Trigger $trigger
     ) {
