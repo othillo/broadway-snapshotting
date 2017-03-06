@@ -10,7 +10,7 @@ use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Broadway\EventSourcing\EventSourcingRepository;
-use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStore;
 use othillo\Broadway\Snapshotting\EventSourcing\Testing\TestEventSourcedAggregateRoot;
 use othillo\Broadway\Snapshotting\Snapshot\Snapshot;
 use othillo\Broadway\Snapshotting\Snapshot\SnapshotNotFoundException;
@@ -29,7 +29,7 @@ class SnapshottingEventSourcingRepositoryTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->eventSourcingRepository = $this->prophesize(EventSourcingRepository::class);
-        $this->eventStore              = $this->prophesize(EventStoreInterface::class);
+        $this->eventStore              = $this->prophesize(EventStore::class);
         $this->snapshotRepository      = $this->prophesize(SnapshotRepository::class);
 
         $this->snapshottingEventSourcingRepository = new SnapshottingEventSourcingRepository(
